@@ -31,7 +31,7 @@ try{
      assert.match(await page.locator('#reviewed').innerText(),/4 of 4/);
      await page.locator('#tools button').first().click();
      assert.match(await page.locator('#reviewed').innerText(),/4 of 4/);
-     if(i===0){await page.locator('#hint').click();assert.ok(await page.locator('#hint').isDisabled());}
+     if(i===0){await page.locator('#bookmark').click();await page.locator('#notes').fill('Fictional observation');await page.locator('#confidence').selectOption('high');await page.locator('#hint').click();assert.ok(await page.locator('#hint').isDisabled());}
      const correct=i!==1;
      await page.locator((c.phish===correct)?'#phish':'#legit').click();
      expectedScore+=correct?140+Math.min(5,streak)*10-(i===0?30:0):0;
@@ -43,13 +43,13 @@ try{
      await page.locator('#next').click();
     }
     assert.equal(visited.size,30);assert.equal(await page.locator('#review .reviewrow').count(),30);
-    assert.match(await page.locator('#summaryMetrics').innerText(),/97%/);
+    assert.match(await page.locator('#summaryMetrics').innerText(),/97%/);assert.equal(await page.locator('#breakdowns section').count(),3);await page.locator('#reviewFilter').selectOption('wrong');assert.equal(await page.locator('#review .reviewrow').count(),1);await page.locator('#reviewFilter').selectOption('all');assert.match(await page.locator('#review').innerText(),/Fictional observation/);
     await page.locator('#retry').click();assert.equal(await page.locator('#progressText').innerText(),'0 / 1');
     page.once('dialog',d=>d.accept());await page.locator('#quit').click();assert.ok(await page.locator('#setup').isVisible());
     await page.reload();assert.notEqual(await page.locator('#best').innerText(),'0 points / case');
     page.once('dialog',d=>d.accept());await page.locator('#reset').click();assert.equal(await page.locator('#best').innerText(),'0 points / case');
-    await page.locator('#level').selectOption('Advanced');await page.locator('#type').selectOption('sms');await page.locator('#start').click();
-    assert.equal(await page.locator('#channel').innerText(),'SMS MESSAGE');assert.equal(await page.locator('#difficulty').innerText(),'Advanced');
+    await page.locator('#theme').selectOption('light');assert.equal(await page.locator('html').getAttribute('data-theme'),'light');await page.locator('#textSize').selectOption('large');await page.locator('#mode').selectOption('exam');await page.locator('#level').selectOption('Advanced');await page.locator('#type').selectOption('sms');await page.locator('#start').click();
+    assert.equal(await page.locator('#channel').innerText(),'SMS MESSAGE');assert.equal(await page.locator('#difficulty').innerText(),'Advanced');assert.ok(await page.locator('#hint').isDisabled());await page.locator('#phish').click();assert.equal(await page.locator('#feedbackTitle').innerText(),'Verdict recorded');await page.reload();await page.locator('#resume').click();assert.ok(await page.locator('#game').isVisible());
     assert.equal(await page.locator('input,form,a[href],iframe').count(),0);
     assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
     await page.close();

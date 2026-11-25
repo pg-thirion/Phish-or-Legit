@@ -28,3 +28,7 @@ Import this repository into Vercel. The committed vercel.json runs regression te
 All examples use fictional organisations and reserved .example domains. Links are inert, attachments are metadata only, and the game never collects credentials or sends data to a server. The app uses a restrictive content security policy and text-only DOM rendering. Personal bests are stored locally as average points per completed case, with no server account or analytics. Use Reset progress to erase your saved best. Older total-score records are not used because they cannot be compared with average scores.
 
 This is a simulation, not a live phishing scanner. Authentication results, domain age and attachment analysis are illustrative. Client-side answers are available in the source and are not suitable for a tamper-resistant examination.
+
+## Expanded training tools
+
+Practice, exam, daily (UTC date), weak-area and saved-case modes; topic filters; resumable sessions (completed verdicts are saved between cases; unsubmitted notes are not); local lifetime records and achievements; bookmarks; confidence and analyst notes; registered-domain breakdown; response guidance; performance analytics by channel, difficulty and topic; review filtering; print/PDF report; light theme, large text and optional keyboard shortcuts; field reference. Exam mode is educational and not tamper resistant.
