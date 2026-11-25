@@ -1,5 +1,7 @@
 # Phish or Legit
 
+**Live game:** [Play Phish or Legit on Vercel](https://phish-or-legit-seven.vercel.app/)
+
 A browser-based cybersecurity awareness game with 30 fictional email, SMS and login-page investigations. Three difficulty levels, an evidence toolkit, verdict explanations, session statistics and retries.
 
 ## Run locally
