@@ -17,11 +17,11 @@ npx playwright install --with-deps chromium firefox webkit
 node tests/browser.mjs
 ```
 
-The CI workflow runs the unit and integration tests and all 30 cases in each of Chromium, Firefox and WebKit at desktop and mobile viewport sizes. Deployment runs only after the test job succeeds.
+The CI workflow runs the unit and integration tests and all 30 cases in each of Chromium, Firefox and WebKit at desktop and mobile viewport sizes. Vercel runs the unit and integration suite before packaging the static assets. Cross-browser CI runs separately.
 
-## GitHub Pages
+## Vercel deployment
 
-In repository Settings > Pages, select GitHub Actions as the publishing source. Run the **Test and deploy GitHub Pages** workflow from the Actions tab if needed. Only the six public runtime assets are packaged. Expected URL: https://pg-thirion.github.io/Phish-or-Legit/
+Import this repository into Vercel. The committed vercel.json runs regression tests before copying only the public runtime assets into dist, and configures HTTP security headers. The production branch is main.
 
 ## Safety and privacy
 
