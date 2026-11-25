@@ -5,6 +5,7 @@ function selectCases(cases, level, type, count, random=Math.random) {
 }
 
 function grade(c,verdict,inspected,streak,hint){
+ if(verdict!=="phish"&&verdict!=="legit") throw new TypeError("Invalid verdict");
  const correct=(verdict==="phish")===c.phish;
  const nextStreak=correct?streak+1:0;
  return {correct,streak:nextStreak,points:correct?Math.max(0,100+Math.min(4,new Set(inspected).size)*10+Math.min(5,streak)*10-(hint?30:0)):0};
